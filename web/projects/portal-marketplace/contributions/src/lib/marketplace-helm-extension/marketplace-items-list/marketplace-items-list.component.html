@@ -15,12 +15,12 @@
                         <mat-icon>extension</mat-icon>
                         {{ item.name }}
                         @if (item.installed) {
-                        <span class="marketplace-item-status-installed">Installed</span>
+                        <span class="marketplace-item-status-installed">{{ t('items.status.installed') }}</span>
                         }
                     </div>
                 </mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
+            <mat-card-content class="marketplace-item-content">
                 <p>{{ item.shortDescription }}</p>
             </mat-card-content>
             <mat-card-actions>

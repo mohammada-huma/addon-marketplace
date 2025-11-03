@@ -1,0 +1,11 @@
+{
+  "http.empty.description": "Try to install a plugin from the marketplace.",
+  "http.empty.title": "No plugins found!",
+  "http.error.description": "An error occurred while loading the data.",
+  "http.error.title": "Error",
+  "items.button.close": "Close",
+  "items.button.install": "Install",
+  "items.button.uninstall": "Uninstall",
+  "items.button.view": "View Details",
+  "items.status.installed": "Installed"
+}

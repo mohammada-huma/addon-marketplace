@@ -3,11 +3,18 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
   padding-top: 1rem;
+}
 
-  .marketplace-item-card:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-  }
+.marketplace-item-card {
+  cursor: pointer;
+}
+
+.marketplace-item-card:hover {
+  background-color: #f0f0f0;
+}
+
+.marketplace-item-content {
+  height: 100%;
 }
 
 .marketplace-item-subtitle {
