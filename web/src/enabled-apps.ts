@@ -6,10 +6,9 @@ import {
   withShellMiddleware,
 } from '@huma-engineering/app-kit';
 import { PROGRAM_LIST_COMPONENT_LOADER } from '@huma-engineering/auth-kit/extensions';
-import { includingMarketplace } from '@huma-engineering/portal-marketplace/app';
 import { environment } from './environments/environment.development';
 
-const apps: ProvidableApp[] = [includingMarketplace()];
+const apps: ProvidableApp[] = [];
 
 import { inject } from '@angular/core';
 import { ShellPortalManagerService } from '@huma-engineering/app-kit';

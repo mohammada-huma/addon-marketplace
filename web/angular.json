@@ -47,11 +47,6 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "./projects/portal-marketplace/assets",
-                "output": "public"
-              },
-              {
-                "glob": "**/*",
                 "input": "./node_modules/@huma-engineering/ui-kit/assets",
                 "output": "public"
               },

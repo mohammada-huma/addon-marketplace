@@ -16,6 +16,7 @@ import {
   MatCardSubtitle,
 } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslationDirective } from '@huma-engineering/tool-kit/i18n';
@@ -40,6 +41,7 @@ import { MarketplaceItem, MarketplaceItemStatus } from '../../types';
     MatCardSubtitle,
     MatButton,
     MatTabsModule,
+    MatIcon,
   ],
   templateUrl: './marketplace-items-list.component.html',
   styleUrl: './marketplace-items-list.component.scss',

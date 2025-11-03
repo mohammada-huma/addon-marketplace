@@ -7,33 +7,33 @@ on:
 workspace:
   id: 26
   name: addon-marketplace
-  project: addon-marketplace
+  project: mohammada-addon-marketplace
 
 services:
   - name: db
     type: postgresql
-    database_name: addon-marketplace
+    database_name: mohammada-addon-marketplace
   - name: web
     type: container
     build:
-      repo: https://github.com/huma-engineering/xxx
+      repo: https://github.com/mohammada-huma/addon-marketplace
       branch: master
       dockerfile: build/Dockerfile
       context: web
     ingress:
-      host: addon-marketplace.sbx.huma.com
+      host: mohammada-addon-marketplace.sbx.huma.com
       paths: ["/"]
       port: 80
   - name: server
     type: container
     build:
-      repo: https://github.com/huma-engineering/xxx
+      repo: https://github.com/mohammada-huma/addon-marketplace
       branch: master
       dockerfile: build/Dockerfile
       context: server
     replicas: 2
     ingress:
-      host: addon-marketplace.sbx.huma.com
+      host: mohammada-addon-marketplace.sbx.huma.com
       paths: ["/api"]
       port: 8000
     envs:

@@ -1,13 +1,11 @@
-import { createStandaloneAppProvider } from '@huma-engineering/app-kit';
+import { Provider } from '@angular/core';
 import { includingHelm } from '@huma-engineering/portal-helm/app';
-import { MarketplaceHelmExtension } from 'projects/portal-marketplace/contributions/src/lib/provider';
-import { MarketplaceApp } from './portal-marketplace.app';
+import { MarketplaceHelmExtension } from '@huma-engineering/portal-marketplace/contributions';
 
 /**
- * Provides the Marketplace as a standalone application.
+ *
  */
-export const includingMarketplace = createStandaloneAppProvider(
-  MarketplaceApp,
+export const includingMarketplace: () => Provider[] = () => [
   MarketplaceHelmExtension,
   ...includingHelm().providers,
-);
+];
