@@ -1,0 +1,21 @@
+[project]
+name = "marketplace-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "gunicorn>=23.0.0",
+    "craft_server",
+]
+
+[tool.uv.sources]
+craft_server = { path = "../../craft-server", editable = true }
+# craft_server = { git = "https://github.com/huma-engineering/craft-server.git", rev = "master" }
+
+[dependency-groups]
+dev = [
+    "django-debug-toolbar>=5.2.0",
+    "ruff>=0.12.4",
+    "tblib>=3.1.0",
+]

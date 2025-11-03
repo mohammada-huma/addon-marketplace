@@ -1,0 +1,10 @@
+<ng-container *transloco="let t; prefix: 'marketplace'">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="Installed">
+            <huma-marketplace-items-list [onlyInstalled]="true" />
+        </mat-tab>
+        <mat-tab label="Marketplace">
+            <huma-marketplace-items-list [onlyInstalled]="false" />
+        </mat-tab>
+    </mat-tab-group>
+</ng-container>

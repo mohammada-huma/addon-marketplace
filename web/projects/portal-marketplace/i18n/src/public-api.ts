@@ -1,0 +1,1 @@
+export { languageLoader } from './loader';

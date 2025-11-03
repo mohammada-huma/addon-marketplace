@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17
+    container_name: marketplace_postgres_test_db
+    environment:
+      POSTGRES_DB: huma
+      POSTGRES_USER: huma
+      POSTGRES_PASSWORD: pass123
+      PGDATA: /data/postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U huma"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    command: -c fsync=off -c synchronous_commit=off -c full_page_writes=off
+
+  minio:
+    image: minio/minio
+    container_name: marketplace_minio_test
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: password123$
+      MINIO_BUCKETS: huma-dev
+    expose:
+      - "9000"
+      - "9001"
+    entrypoint: sh
+    command: -c 'mkdir -p /data/huma-dev && /usr/bin/minio server /data'
+
+  test:
+    container_name: huma_marketplace_test
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=huma
+      - POSTGRES_USER=huma
+      - POSTGRES_PASSWORD=pass123
+      - STORAGE_TYPE=aws
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password123$
+      - AWS_STORAGE_BUCKET_NAME=huma-dev
+      - AWS_S3_ENDPOINT_URL=http://minio:9000
+    depends_on:
+      minio:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    volumes:
+      - ./test-results:/app/test-results
+    command: |
+      python manage.py test --noinput --parallel

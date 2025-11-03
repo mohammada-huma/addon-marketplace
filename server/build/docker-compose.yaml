@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17
+    container_name: marketplace_postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: huma
+      POSTGRES_USER: huma
+      POSTGRES_PASSWORD: pass123
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - marketplace_pgdata:/data/postgres
+    networks:
+      - marketplace_network
+
+volumes:
+  marketplace_pgdata:
+
+networks:
+  marketplace_network:

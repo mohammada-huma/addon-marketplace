@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "options": { "plugins": ["prettier-plugin-sort-json"] },
+      "files": ["**/i18n/**"]
+    }
+  ],
+  "plugins": ["prettier-plugin-organize-imports"],
+  "trailingComma": "all",
+  "proseWrap": "always",
+  "printWidth": 80
+}

@@ -1,0 +1,15 @@
+<ng-container *transloco="let t; prefix: 'marketplace'">
+    <mat-dialog-content>
+        <h1>{{ data.item.name }}</h1>
+        <p>{{ data.item.shortDescription }}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        @if (isInstalled()) {
+        <button mat-button="filled" (click)="onUninstall()">{{ t('items.button.uninstall') }}</button>
+        }
+        @else {
+        <button mat-button="filled" (click)="onInstall()">{{ t('items.button.install') }}</button>
+        }
+        <button mat-button="outlined" (click)="onClose()">{{ t('items.button.close') }}</button>
+    </mat-dialog-actions>
+</ng-container>

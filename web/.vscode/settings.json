@@ -1,0 +1,11 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "cSpell.words": ["huma", "Transloco"],
+  "angular.log": "verbose",
+  "jsdoc-generator.includeTypes": false,
+  "stylelint.validate": ["css", "scss"],
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@huma-engineering/portal-marketplace",
+  "version": "0.0.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "private": true,
+  "peerDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "@huma-engineering/ui-kit": "^1.0.12",
+    "@huma-engineering/app-kit": "^1.0.12",
+    "@huma-engineering/tool-kit": "^1.0.12"
+  },
+  "scripts": {
+    "build": "ng build portal-marketplace"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

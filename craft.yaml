@@ -1,0 +1,52 @@
+---
+on:
+  push:
+    branches:
+      - master
+
+workspace:
+  id: 26
+  name: addon-marketplace
+  project: addon-marketplace
+
+services:
+  - name: db
+    type: postgresql
+    database_name: addon-marketplace
+  - name: web
+    type: container
+    build:
+      repo: https://github.com/huma-engineering/xxx
+      branch: master
+      dockerfile: build/Dockerfile
+      context: web
+    ingress:
+      host: addon-marketplace.sbx.huma.com
+      paths: ["/"]
+      port: 80
+  - name: server
+    type: container
+    build:
+      repo: https://github.com/huma-engineering/xxx
+      branch: master
+      dockerfile: build/Dockerfile
+      context: server
+    replicas: 2
+    ingress:
+      host: addon-marketplace.sbx.huma.com
+      paths: ["/api"]
+      port: 8000
+    envs:
+      - service: db
+        type: secret
+        name: database-creds
+        mapping:
+          password: "POSTGRES_PASSWORD"
+          username: "POSTGRES_USER"
+      - service: db
+        type: configmap
+        name: database-info
+        mapping:
+          host: "POSTGRES_HOST"
+          port: "POSTGRES_PORT"
+          database_name: "POSTGRES_DB"
